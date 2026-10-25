@@ -1,21 +1,37 @@
 {
   "name": "dsh-plugin-mcp-toggles",
   "version": "0.1.0",
-  "private": true,
   "type": "module",
   "description": "Turn installed MCP servers on or off per conversation, from a picker in the session header.",
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "dsh-plugin",
+    "mcp",
+    "model-context-protocol",
+    "plugin"
+  ],
+  "homepage": "https://github.com/ZhaoHanshao/dsh-plugin-mcp-toggles#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZhaoHanshao/dsh-plugin-mcp-toggles.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ZhaoHanshao/dsh-plugin-mcp-toggles/issues"
+  },
+  "author": "ZhaoHanshao",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
   "main": "./lib/index.js",
   "exports": {
-    ".": {
-      "default": "./lib/index.js"
-    },
-    "./client": {
-      "default": "./lib/client.js"
-    },
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
     "./locale/*.json": "./locale/*.json",
     "./icon": "./icon.svg",
-    "./package.json": "./package.json",
-    "./cordis.patch.yml": "./cordis.patch.yml"
+    "./package.json": "./package.json"
   },
   "files": [
     "lib/index.js",
@@ -35,5 +51,10 @@
       ]
     }
   },
-  "license": "MIT"
+  "scripts": {
+    "prepublishOnly": "node --check lib/index.js && node --check lib/client.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

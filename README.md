@@ -14,21 +14,31 @@ MCP 服务器在 DSH profile 里是进程级的：`@deepseek-ai/dsh-mcp-client` 
 
 ## 安装
 
+这是一个标准的 DSH bundle 包：`package.json` 里用 `dsh.bundle.patch` 声明要插入的
+插件行，用 `dsh.client` 声明 Web 端入口，没有依赖、没有构建步骤，装上即可用。
+
+在 DSH 里装进当前 profile：
+
+```
+plugin_manager action=install_bundle target=dsh-plugin-mcp-toggles
+```
+
+`target` 接受安装 spec，也可以写成带版本或指向仓库的形式：
+
+```
+plugin_manager action=install_bundle target=dsh-plugin-mcp-toggles@0.1.0
+plugin_manager action=install_bundle target=github:ZhaoHanshao/dsh-plugin-mcp-toggles
+```
+
+装好后重启 DSH，打开任意会话即可看到按钮。若想先在本地看代码：
+
 ```bash
-git clone https://github.com/ZhaoHanshao/dsh-plugin-mcp-toggles.git
+npm install dsh-plugin-mcp-toggles   # 或 npm pack 后检查导出的文件清单
 ```
-
-然后在 DSH 里把它装进当前 profile（`<profile>` 换成 `desktop`、`cli` 等实际名字）：
-
-```
-plugin_manager action=install_bundle target=<绝对路径>/dsh-plugin-mcp-toggles
-```
-
-装好后重启 DSH，打开任意会话即可看到按钮。
 
 它需要宿主提供 `webServer` 服务与 `conversation.session.header.utilities` /
 `conversation.hero.options` 两个槽位，因此要求 DSH 版本不低于它开发时的
-`@deepseek-ai/dsh-client-ui-conversation`。
+`@deepseek-ai/dsh-client-ui-conversation`（运行时 **0.2.1-rc.3**）。
 
 ## 用法
 
