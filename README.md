@@ -1,5 +1,9 @@
 # dsh-plugin-mcp-toggles
 
+[![npm version](https://img.shields.io/npm/v/dsh-plugin-mcp-toggles.svg)](https://www.npmjs.com/package/dsh-plugin-mcp-toggles)
+[![license](https://img.shields.io/npm/l/dsh-plugin-mcp-toggles.svg)](LICENSE)
+[![node](https://img.shields.io/node/v/dsh-plugin-mcp-toggles.svg)](package.json)
+
 为**每个会话**单独开关已安装的 MCP 服务器。
 
 ## 它解决什么
@@ -17,23 +21,26 @@ MCP 服务器在 DSH profile 里是进程级的：`@deepseek-ai/dsh-mcp-client` 
 这是一个标准的 DSH bundle 包：`package.json` 里用 `dsh.bundle.patch` 声明要插入的
 插件行，用 `dsh.client` 声明 Web 端入口，没有依赖、没有构建步骤，装上即可用。
 
-在 DSH 里装进当前 profile：
+从 npm 装进当前 profile：
 
 ```
 plugin_manager action=install_bundle target=dsh-plugin-mcp-toggles
 ```
 
-`target` 接受安装 spec，也可以写成带版本或指向仓库的形式：
+`target` 接受任意安装 spec：
 
 ```
 plugin_manager action=install_bundle target=dsh-plugin-mcp-toggles@0.1.0
 plugin_manager action=install_bundle target=github:ZhaoHanshao/dsh-plugin-mcp-toggles
 ```
 
-装好后重启 DSH，打开任意会话即可看到按钮。若想先在本地看代码：
+装好后重启 DSH，打开任意会话即可看到按钮。
+
+想先读代码或自己打包检查文件清单：
 
 ```bash
-npm install dsh-plugin-mcp-toggles   # 或 npm pack 后检查导出的文件清单
+npm install dsh-plugin-mcp-toggles
+npm pack dsh-plugin-mcp-toggles --dry-run   # 只打印将要发布的文件
 ```
 
 它需要宿主提供 `webServer` 服务与 `conversation.session.header.utilities` /
