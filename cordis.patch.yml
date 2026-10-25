@@ -1,0 +1,5 @@
+- insert:
+    - id: mcp-toggles
+      name: 'dsh-plugin-mcp-toggles'
+      config:
+        sharedResourceTools: true

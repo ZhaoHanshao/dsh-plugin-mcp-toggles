@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "MCP per conversation",
+    "description": "Adds a picker to each conversation header that lists the installed MCP servers and turns each one on or off for that conversation only."
+  }
+}
