@@ -45,7 +45,11 @@ npm pack dsh-plugin-mcp-toggles --dry-run   # 只打印将要发布的文件
 
 它需要宿主提供 `webServer` 服务与 `conversation.session.header.utilities` /
 `conversation.hero.options` 两个槽位，因此要求 DSH 版本不低于它开发时的
-`@deepseek-ai/dsh-client-ui-conversation`（运行时 **0.2.1-rc.3**）。
+`@deepseek-ai/dsh-client-ui-conversation`（运行时 **0.2.1-rc.3**）。这条约束写进了
+`peerDependencies`，但标记为可选 —— DSH 把这些包内置在自己的安装目录里，普通 npm
+安装不该为它再拉一份副本。
+
+Node 版本要求 `^22.19.0 || >=24.0.0`，与 DSH 官方下限一致。
 
 ## 用法
 
