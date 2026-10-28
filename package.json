@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugin-mcp-toggles",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "type": "module",
   "description": "Turn installed MCP servers on or off per conversation, from a picker in the session header.",
   "keywords": [
